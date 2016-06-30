@@ -32,4 +32,13 @@
         android:layout_below="@+id/tvUserName"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5h"
+        android:id="@+id/tvTime"
+        android:layout_above="@+id/tvBody"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

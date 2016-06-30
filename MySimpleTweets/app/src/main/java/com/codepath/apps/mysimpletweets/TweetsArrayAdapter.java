@@ -40,12 +40,16 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         ImageView ivProfileImage = (ImageView) convertView.findViewById(R.id.ivProfileImage);
         TextView tvUserName = (TextView) convertView.findViewById(R.id.tvUserName);
         TextView tvBody = (TextView) convertView.findViewById(R.id.tvBody);
+        // For time stamp
+        TextView tvTime = (TextView) convertView.findViewById(R.id.tvTime);
 
         //4. Populate data into the subviews
         tvUserName.setText(tweet.getUser().getScreenName());
         tvBody.setText(tweet.getBody());
         ivProfileImage.setImageResource(android.R.color.transparent); //clear out the old image for a recycled view
         Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl()).into(ivProfileImage);
+        // For time stamp
+        tvTime.setText(tweet.getTimeDifference());
 
         //5. Return the view to be inserted into the list
         return convertView;
