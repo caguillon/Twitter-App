@@ -17,6 +17,7 @@ import cz.msebera.android.httpclient.Header;
  * Created by caguillon on 6/28/16.
  */
 public class HomeTimelineFragment extends TweetsListFragment {
+
     private TwitterClient client;
 
     @Override

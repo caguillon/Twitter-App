@@ -52,4 +52,12 @@ public class TweetsListFragment extends Fragment{
     public void addAll(List<Tweet> tweets){
         aTweets.addAll(tweets);
     }
+
+    // This is supposed to be in HomeTimelineFragment.java
+    // Adds new tweet to array and notifies the adapter it changed
+    public void appendTweet(Tweet tweet) {
+        tweets.add(0, tweet);
+        aTweets.notifyDataSetChanged();
+        lvTweets.setSelection(0);
+    }
 }
