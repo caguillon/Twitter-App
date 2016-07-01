@@ -24,7 +24,7 @@
             android:layout_marginRight="10dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:src="@android:drawable/screen_background_light_transparent"/>
+            android:src="@android:drawable/screen_background_light_transparent" />
 
         <TextView
             android:id="@+id/tvFullName"

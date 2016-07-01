@@ -56,7 +56,7 @@ public class TimelineActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // To get to profile
+    // To get to the profile of the signed in user
     public void onProfileView(MenuItem mi) {
         // Launch the profile view
         Intent i = new Intent(this, ProfileActivity.class);

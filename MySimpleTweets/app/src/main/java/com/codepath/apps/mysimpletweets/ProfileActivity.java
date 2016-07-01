@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         client = TwitterApplication.getRestClient();
 
-        //Get the account info
+        /*//Get the account info
         client.getUserInfo(new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -38,10 +38,14 @@ public class ProfileActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("@" + user.getScreenName());
                 populateProfileHeader(user);
             }
-        });
+        });*/
 
         // Get the screen name from the activity that launches this
+        // If no screenName is passed, then load the logged in user's data
         String screenName = getIntent().getStringExtra("screen_name");
+
+        // new code
+        loadUserInfo(screenName);
 
         if (savedInstanceState == null) {
             // Create the user timeline fragment
@@ -54,7 +58,36 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
+    // new code
+    // Loads either the current user OR a specified user's data
+    public void loadUserInfo(String screenName) {
+        if (screenName != null && !screenName.isEmpty()) {
+            // Trigger call to "users/show" endpoint to load user profile data
+            // populate the top of the profile view
+            client.getUserInfo(screenName, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    User user = User.fromJSON(response);
+                    getSupportActionBar().setTitle("@" + user.getScreenName());
+                    populateProfileHeader(user);
+                }
+            });
+        } else { // no screenName was passed
+            // Trigger call to "account/verifyCredentials" endpoint to load current user profile data
+            // populate the top of the profile view
+            client.getMyUserInfo(new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    User user = User.fromJSON(response);
+                    getSupportActionBar().setTitle("@" + user.getScreenName());
+                    populateProfileHeader(user);
+                }
+            });
+        }
+    }
+
     private void populateProfileHeader(User user) {
+        // ...populate the header data based on the user...
         TextView tvName = (TextView) findViewById(R.id.tvFullName);
         TextView tvTagline = (TextView) findViewById(R.id.tvTagline);
         TextView tvFollowers = (TextView) findViewById(R.id.tvFollowers);
