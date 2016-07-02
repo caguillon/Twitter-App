@@ -56,7 +56,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-The most challenging part was creating the feature that will compose a new tweet and post it.
+The most challenging part was creating the feature that composed a new tweet and posted it.
 
 ## Open-source libraries used
 
