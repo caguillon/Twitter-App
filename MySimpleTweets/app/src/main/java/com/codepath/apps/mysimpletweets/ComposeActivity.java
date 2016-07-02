@@ -12,6 +12,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 import cz.msebera.android.httpclient.Header;
 
 public class ComposeActivity extends AppCompatActivity {
@@ -44,7 +46,7 @@ public class ComposeActivity extends AppCompatActivity {
                 //Toast.makeText(this, "Saved tweet: " + strValue, Toast.LENGTH_SHORT).show();
 
                 Intent data = new Intent();
-                data.putExtra("Tweet", tweet);
+                data.putExtra("Tweet", (Serializable) tweet);
 
                 setResult(RESULT_OK, data); // set result code and bundle data for response
 
